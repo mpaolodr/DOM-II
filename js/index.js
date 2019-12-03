@@ -5,6 +5,8 @@ const reverseDir = document.querySelectorAll(".content-section");
 const contentTxt = document.querySelectorAll(".text-content");
 const headImg = document.querySelector(".intro img");
 const destination = document.querySelector(".content-destination");
+const navContainer = document.querySelector(".nav-container");
+const mainNav = document.querySelector(".main-navigation");
 
 //MOUSEOVER IMAGES
 contentImg.forEach(function(item) {
@@ -76,4 +78,17 @@ body.addEventListener("keydown", function(e) {
     destination.style.display = "block";
     headImg.style.display = "block";
   }
+});
+
+//RESIZE
+window.addEventListener("resize", function() {
+  if (screen.width <= 980) {
+    navContainer.style.flexDirection = "column";
+    mainNav.style.position = "static";
+  } else {
+    navContainer.style.flexDirection = "row";
+    mainNav.style.position = "fixed";
+  }
+
+  console.log(window.innerWidth);
 });
