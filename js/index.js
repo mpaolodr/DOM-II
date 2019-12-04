@@ -118,8 +118,7 @@ btn.forEach(function(item) {
     e.stopPropagation();
     gsap.to(item, {
       y: 0,
-      x: 0,
-      repeat: 0
+      x: 0
     });
   });
 });
