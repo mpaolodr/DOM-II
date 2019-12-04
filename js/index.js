@@ -104,21 +104,43 @@ window.addEventListener("resize", function() {
 btn.forEach(function(item) {
   item.addEventListener("mouseover", function(e) {
     e.stopPropagation();
-    gsap.to(item, {
-      duration: 2,
-      ease: "bounce.out",
-      y: -15,
-      x: 0
+    gsap.from(item, {
+      duration: 1.5,
+      ease: Bounce.easeIn,
+      y: 20,
+      transition: 0.5
     });
   });
 });
 
-btn.forEach(function(item) {
-  item.addEventListener("mouseleave", function(e) {
-    e.stopPropagation();
-    gsap.to(item, {
-      y: 0,
-      x: 0
-    });
+const intro = document.querySelector(".intro");
+const pick = document.querySelector(".content-pick");
+window.addEventListener("load", function() {
+  gsap.from(intro, {
+    y: -200,
+    opacity: 0,
+    duration: 1,
+    delay: 1
+  });
+
+  gsap.from(reverseDir, {
+    x: -500,
+    opacity: 0,
+    duration: 1,
+    delay: 1.2
+  });
+
+  gsap.from(destination, {
+    x: 500,
+    opacity: 0,
+    duration: 1,
+    delay: 1.5
+  });
+
+  gsap.from(pick, {
+    y: 200,
+    opacity: 0,
+    duration: 1,
+    delay: 1.8
   });
 });
