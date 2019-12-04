@@ -1,4 +1,5 @@
 // Your code goes here
+
 const body = document.querySelector("body");
 const contentImg = document.querySelectorAll(".img-content");
 const reverseDir = document.querySelectorAll(".content-section");
@@ -7,13 +8,16 @@ const headImg = document.querySelector(".intro img");
 const destination = document.querySelector(".content-destination");
 const navContainer = document.querySelector(".nav-container");
 const mainNav = document.querySelector(".main-navigation");
+const navLink = document.querySelectorAll(".nav-link");
+const btn = document.querySelectorAll(".destination .btn");
+
+mainNav.style.zIndex = "5";
 
 //MOUSEOVER IMAGES
 contentImg.forEach(function(item) {
   item.addEventListener("mouseover", function(e) {
     item.style.transform = "scale(1.2)";
     item.style.transition = "all 0.2s";
-    item.style.zIndex = "1";
     e.stopPropagation();
   });
 });
@@ -22,7 +26,6 @@ contentImg.forEach(function(item) {
 contentImg.forEach(function(item) {
   item.addEventListener("mouseleave", function(e) {
     item.style.transform = "scale(1)";
-    item.style.zIndex = "-1";
     e.stopPropagation();
   });
 });
@@ -31,6 +34,12 @@ contentImg.forEach(function(item) {
 reverseDir.forEach(function(item) {
   item.addEventListener("click", function() {
     item.style.flexDirection = "row-reverse";
+  });
+});
+
+navLink.forEach(function(link) {
+  link.addEventListener("click", function(e) {
+    e.preventDefault();
   });
 });
 
@@ -89,6 +98,28 @@ window.addEventListener("resize", function() {
     navContainer.style.flexDirection = "row";
     mainNav.style.position = "fixed";
   }
+});
 
-  console.log(window.innerWidth);
+//GSAP
+btn.forEach(function(item) {
+  item.addEventListener("mouseover", function(e) {
+    e.stopPropagation();
+    gsap.to(item, {
+      duration: 2,
+      ease: "bounce.out",
+      y: -15,
+      x: 0
+    });
+  });
+});
+
+btn.forEach(function(item) {
+  item.addEventListener("mouseleave", function(e) {
+    e.stopPropagation();
+    gsap.to(item, {
+      y: 0,
+      x: 0,
+      repeat: 0
+    });
+  });
 });
